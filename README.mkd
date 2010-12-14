@@ -60,3 +60,21 @@ version with all of them)::
         //does something ONLY for safari in windows in a pc
     }
 
+Modules
+=======
+
+* whoami.core.js - Core code for the library;
+* whoami.platform.android.js - Automatically identifies if the current user's
+platform is an android os;
+* whoami.platform.iphone.js - Automatically identifies if the current user's
+platform is an iphone;
+* whoami.platform.linux.js - Automatically identifies if the current user's
+platform is linux;
+* whoami.platform.windows.js - Automatically identifies if the current user's
+platform is windows;
+* whoami.platform.ipad.js - Automatically identifies if the current user's
+platform is an ipad;
+* whoami.platform.ipod.js - Automatically identifies if the current user's
+platform is an ipod;
+* whoami.platform.mac.js - Automatically identifies if the current user's
+platform is a mac;
