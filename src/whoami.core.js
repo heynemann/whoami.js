@@ -34,20 +34,43 @@ var whoami = {
             browserPlatform: navigator.platform.toLowerCase()
         };
 
-        //platform
-        for (var i=0; i<this.modules.platform.length; i++){
-            var module = this.modules.platform[i];
-            module(context);
-        }
+        var detect = function(collection, context, property) {
+            for (var i=0; i<collection.length; i++){
+                var module = collection[i];
+                var detected = module(context);
 
-        //browser
-        for (var i=0; i<this.modules.browser.length; i++){
-            var module = this.modules.browser[i];
-            module(context);
-        }
+                if (context[property]) {
+                    break;
+                }
+            }
+        };
 
-        this.browser = context.browser;
-        this.platform = context.platform;
+        detect(this.modules.platform, context, 'platform');
+        detect(this.modules.browser, context, 'browser');
+
+        this.browser = context.browser || null;
+        this.platform = context.platform || null;
+    },
+
+    helpers: {
+        platform: {
+            identifyFromPlatform: function(regex, name) {
+                var pattern = regex;
+                return function(context) {
+                    if (pattern.test(context.browserPlatform)) {
+                        context.platform = name;
+                    }
+                };
+            },
+            identifyFromUserAgent: function(regex, name) {
+                var pattern = regex;
+                return function(context) {
+                    if (pattern.test(context.userAgent)) {
+                        context.platform = name;
+                    }
+                };
+            }
+        }
     }
 };
 

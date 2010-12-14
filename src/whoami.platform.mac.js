@@ -1,6 +1,2 @@
-//automatically registers Mac detection
-whoami.register(whoami.type.platform, function(context) {
-    if (/mac/.test(context.browserPlatform)) {
-        context.platform = "mac";
-    }
-});
+whoami.register(whoami.type.platform, 
+                whoami.helpers.platform.identifyFromPlatform(/mac/, 'mac'));
