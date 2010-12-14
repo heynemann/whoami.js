@@ -1,0 +1,61 @@
+Whoami.js is a lib that attempts to discover platform, os and browser of the
+user in a modular way.
+
+Modular Way
+===========
+
+You should only include test files that ACTUALLY make sense for your domain.
+This way the library can be smaller. Why test for iPad when you don't even
+provide an iPad version of your website?
+
+Using whoami
+============
+
+Just include whoami.core.js and then the test files you want, like:
+
+* whoami.platforms.pc.js
+* whoami.platforms.mac.js
+* whoami.browsers.firefox.js
+* whoami.browsers.safari.js
+* whoami.browsers.chrome.js
+* whoami.browsers.ie.js
+* whoami.os.windows.js
+* whoami.os.macos.js
+* whoami.os.linux.js
+
+Just to make sure, those are **NOT** all the available options, but those are
+just some examples. It should serve to prove the modular nature of whoami.
+
+Creating My Own Module
+======================
+
+Creating a module is as easy as creating a new call to whoami.register, like
+this::
+
+    whoami.register(function(context) {
+        //detects the browser or os or platform
+        //if it is not this browser or platform or os, return false
+
+        //if it's a platform detection set it
+        context.platform = "ipad";
+
+        //if it's an os detection set it
+        context.os = "solaris";
+
+        //if it's a browser detection set it
+        context.browser = "safari";
+
+    });
+
+Using whoami
+============
+
+After including in your page whoami and the modules you want (or a packaged
+version with all of them)::
+
+    if (whoami.platform == "pc" && 
+        whoami.os == "windows" && 
+        whoami.browser == "safari") {
+        //does something ONLY for safari in windows in a pc
+    }
+
