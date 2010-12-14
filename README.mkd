@@ -4,7 +4,7 @@ user in a modular way.
 Modular Way
 ===========
 
-You should only include test files that ACTUALLY make sense for your domain.
+You should only include module files that ACTUALLY make sense for your domain.
 This way the library can be smaller. Why test for iPad when you don't even
 provide an iPad version of your website?
 
